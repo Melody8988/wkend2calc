@@ -1,14 +1,15 @@
 
 $(document).ready(readyNow);
 
+
 function readyNow(){
     console.log('js')
     $('#addBtn').on('click', addNumbers);
-    $('#subtractBtn').on('click', subtractNumbers);
-    $('#multiplyBtn').on('click', multiplyNumbers);
-    $('#divideBtn').on('click', divideNumbers);
-    //get inputs when page loads v
-    getUserInputs();
+   // $('#subtractBtn').on('click', subtractNumbers);
+   // $('#multiplyBtn').on('click', multiplyNumbers);
+   // $('#divideBtn').on('click', divideNumbers);
+  
+   getUserInputs();
 }
 
 function getUserInputs(){
@@ -33,17 +34,28 @@ function addNumbers(){
     console.log('addition test');
     let x = $('#firstNum').val();
     let y = $('#secondNum').val();
-    let valuesToSend = {x: x, y: y, type: "Add"};
+//if($('#addBtn').clicked == true ){
+    let addToSend = {x: x, y: y, type: "Add"};  
+    console.log('x:', addToSend.x);
+    console.log('y:', addToSend.y);
 
-$.ajax({
-    type: 'POST',
-    data: valuesToSend,
-    url:'/calculation'
-}).done(function(response){
-    console.log('Successfully sent to server')
-    getUserInputs();
-}).fail(function(response){
-    alert('Did not send to server, sorry')
-});
+
+    $.ajax({
+        type: 'POST',
+        data: addToSend,
+        url:'/calculation'
+    }).done(function(response){
+        console.log('Successfully sent to server')
+       // getUserInputs();
+    }).fail(function(response){
+        alert('Did not send to server, sorry')
+    });
 
 }
+
+
+
+
+
+
+
