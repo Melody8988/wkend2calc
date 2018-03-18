@@ -1,10 +1,10 @@
 $(document).ready(readyNow);
 function readyNow(){
-    console.log('js')
+    console.log('js');
     $('#addBtn').on('click', addNumbers);
-    //$('#subtractBtn').on('click', subtractNumbers);
-    //$('#multiplyBtn').on('click', multiplyNumbers);
-    //$('#divideBtn').on('click', divideNumbers);
+    $('#subtractBtn').on('click', subtractNumbers);
+    $('#multiplyBtn').on('click', multiplyNumbers);
+    $('#divideBtn').on('click', divideNumbers);
 }
 
 function addNumbers(){
@@ -19,8 +19,7 @@ function addNumbers(){
         url:'/calculation'
     }).done(function(response){
         console.log('Successfully sent to server');
-        appendToHist();
-       // getUserInputs();
+        postToDom();
     }).fail(function(response){
         alert('Did not send to server, sorry');
     });
@@ -36,18 +35,16 @@ function postToDom(){
     });
 }
 
-function appendToHist(history){
+function appendToHist(response){
     console.log('in append');
-    console.log(history);
-   // console.log(addStatement.x, '1');
-   // console.log(object.x, '2');
-    //console.log(addToSend, '3');
-
-    $('#histContent').empty();
-    // appendString = '<tr><td>' + addStatement.x + '+' + addStatement.y + '=' + result + '<td></tr>'
-    // $('#histContent').append(appendString);
-
+    console.log(response);
+    for(let statement of response)
+    appendString = '<tr><td>' + statement + '<td></tr>'
+    $('#histContent').append(appendString);
 }
+
+
+
 
 
 
