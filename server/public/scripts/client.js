@@ -1,12 +1,12 @@
 $(document).ready(readyNow);
 
-
 function readyNow(){
     console.log('js');
     $('#addBtn').on('click', addNumbers);
     $('#subtractBtn').on('click', subtractNumbers);
     $('#multiplyBtn').on('click', multiplyNumbers);
     $('#divideBtn').on('click', divideNumbers);
+    $('#clear').on('click', clearHistory);
     
 }
 
@@ -63,6 +63,7 @@ function multiplyNumbers(){
         alert('Did not send to server, sorry');
     });
 }
+
 function divideNumbers(){
     x = $('#firstNum').val();
     y = $('#secondNum').val();
@@ -81,8 +82,6 @@ function divideNumbers(){
     });
 }
 
-
-
 function postToDom(){
     $.ajax({
         type: 'GET',
@@ -98,6 +97,11 @@ function appendToHist(response){
     for(let statement of response)
     appendString = '<tr><td>' + statement + '<td></tr>'
     $('#histContent').append(appendString);
+}
+
+function clearHistory(){
+    
+    $('#histContent').empty('');
 }
 
 

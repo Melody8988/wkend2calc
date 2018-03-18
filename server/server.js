@@ -11,45 +11,30 @@ app.use(express.static('server/public'));
 
 function logic(object){
 if(object.type == "Add"){
-    console.log('you will add');
     x = parseInt(object.x);
     y = parseInt(object.y);
     result = x + y;
-    console.log(result);
     history = ( x + ' + ' + y + ' = ' + result );
     calcHistory.push(history);
-    console.log(history);
-    console.log(calcHistory);
+
 }else if(object.type == "Subtract"){
-    console.log('you will subtract');
     x = parseInt(object.x);
     y = parseInt(object.y);
     result = x - y;
-    console.log(result);
     history = ( x + ' - ' + y + ' = ' + result );
     calcHistory.push(history);
-    console.log(history);
-    console.log(calcHistory);
 }else if(object.type == "Multiply"){
-    console.log('you will multiply');
     x = parseInt(object.x);
     y = parseInt(object.y);
     result = x * y;
-    console.log(result);
     history = ( x + ' * ' + y + ' = ' + result );
     calcHistory.push(history);
-    console.log(history);
-    console.log(calcHistory);
 }else if(object.type == "Divide"){
-    console.log('you will divide');
     x = parseInt(object.x);
     y = parseInt(object.y);
     result = x / y;
-    console.log(result);
     history = ( x + ' / ' + y + ' = ' + result );
     calcHistory.push(history);
-    console.log(history);
-    console.log(calcHistory);
     }
 
 }
