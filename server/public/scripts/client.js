@@ -2,26 +2,9 @@ $(document).ready(readyNow);
 function readyNow(){
     console.log('js')
     $('#addBtn').on('click', addNumbers);
-   // $('#subtractBtn').on('click', subtractNumbers);
-   //$('#multiplyBtn').on('click', multiplyNumbers);
-  //  $('#divideBtn').on('click', divideNumbers);
-  
-  // getUserInputs();
-}
-
-function postToDom(){
-    $.ajax({
-        type: 'GET',
-        url: '/calculation'
-    }).done(function(response){
-        appendToHist(response); //new function to append to DOM
-    });
-}
-function appendToHist(addStatement){
-    $('#histContent').empty();
-    appendString = '<tr><td>' + addStatement.x + '+' + addStatement.y + '=' + result + '<td></tr>'
-    $('#histContent').append(appendString);
-
+    //$('#subtractBtn').on('click', subtractNumbers);
+    //$('#multiplyBtn').on('click', multiplyNumbers);
+    //$('#divideBtn').on('click', divideNumbers);
 }
 
 function addNumbers(){
@@ -36,12 +19,37 @@ function addNumbers(){
         url:'/calculation'
     }).done(function(response){
         console.log('Successfully sent to server');
+        appendToHist();
        // getUserInputs();
     }).fail(function(response){
         alert('Did not send to server, sorry');
     });
 
 }
+
+function postToDom(){
+    $.ajax({
+        type: 'GET',
+        url: '/calculation'
+    }).done(function(response){
+        appendToHist(response); //response should be history
+    });
+}
+
+function appendToHist(history){
+    console.log('in append');
+    console.log(history);
+   // console.log(addStatement.x, '1');
+   // console.log(object.x, '2');
+    //console.log(addToSend, '3');
+
+    $('#histContent').empty();
+    // appendString = '<tr><td>' + addStatement.x + '+' + addStatement.y + '=' + result + '<td></tr>'
+    // $('#histContent').append(appendString);
+
+}
+
+
 
 
 
