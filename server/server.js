@@ -5,8 +5,9 @@ const PORT = process.env.PORT || 5006;
 let bodyParser = require('body-parser');
 let calcHistory=[];
 
-
-app.use(bodyParser.urlencoded({extended: true})); 
+//uses
+app.use(bodyParser.urlencoded({extended: true}));
+//serve static files(look in server/public 1st)
 app.use(express.static('server/public'));
 
 function logic(object){
@@ -48,6 +49,11 @@ app.post('/calculation', (req,res) =>{
     console.log(req.body);//addToSend
     //calcHistory.push(addToSend);
     logic(toCalc);
+    res.sendStatus(200);//respond back to client 
+});
+
+app.post('/clearcalcHistory', (req,res) =>{
+    calcHistory=[];
     res.sendStatus(200);//respond back to client 
 });
 

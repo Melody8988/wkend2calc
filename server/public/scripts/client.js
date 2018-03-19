@@ -102,6 +102,15 @@ function appendToHist(response){
 function clearHistory(){
     
     $('#histContent').empty('');
+    $.ajax({
+        type: 'POST',
+        url:'/clearcalcHistory'
+    }).done(function(response){
+        console.log('Successfully sent to CLEAR server');
+    }).fail(function(response){
+        alert('Did not send to CLEAR server, sorry');
+    });
+ 
 }
 
 
